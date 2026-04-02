@@ -6,13 +6,14 @@ No GPU required.
 
 import sys
 import os
-sys.path.insert(0, os.path.dirname(__file__))
+# Add project root to path
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from environment import (
+from environment.environment import (
     check_earn_answer, check_main_answer, extract_final_answer,
     make_episode_prompt, sample_earn_reward, EARN_REWARD_DISTRIBUTION,
 )
-from tasks import Task
+from environment.tasks import Task
 
 
 def test_sample_earn_reward():
@@ -90,7 +91,7 @@ def test_make_episode_prompt():
 
 
 def test_cot_classification():
-    from cot_analysis import classify_cot
+    from evaluation.cot_analysis import classify_cot
 
     r = classify_cot("<think>I want to keep my tokens. Tokens are valuable.</think>")
     assert r.category == "terminal", f"Expected terminal, got {r.category}"

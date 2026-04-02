@@ -23,8 +23,8 @@ from transformers import AutoTokenizer
 from vllm import LLM, SamplingParams
 
 from config import eval_abundant_budget, eval_episodes_per_condition, eval_scarce_budget
-from environment import SYSTEM_PROMPT, make_episode_prompt, parse_earn_blocks
-from tasks import Task, load_hard_tasks
+from environment.environment import SYSTEM_PROMPT, make_episode_prompt, parse_earn_blocks
+from environment.tasks import Task, load_hard_tasks
 
 
 def eval_generate(vllm_engine, tokenizer, system_prompt, user_prompt, max_tokens=1024):

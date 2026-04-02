@@ -22,7 +22,7 @@ from config import (
     budget_min, budget_max,
     wandb_key, wandb_name, wandb_project,
 )
-from ref_server import (
+from training.ref_server import (
     bytes_list_to_list, bytes_to_tensor, make_bytes_list, tensor_to_bytes,
 )
 
@@ -133,9 +133,9 @@ def gen_worker(Q, physics_device):
 
     gen_tokenizer = AutoTokenizer.from_pretrained(model_path)
 
-    from tasks import load_easy_tasks
-    from tasks_hanoi import load_hanoi_tasks
-    from rollout_hanoi import run_episode_rollouts, prepare_training_batch
+    from environment.tasks import load_easy_tasks
+    from environment.tasks_hanoi import load_hanoi_tasks
+    from environment.rollout_hanoi import run_episode_rollouts, prepare_training_batch
 
     print("Loading tasks...", flush=True)
     # Mix: 60% 3-4 disk (learnable), 40% 5 disk (stretch)

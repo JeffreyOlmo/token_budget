@@ -106,8 +106,8 @@ def analyze_checkpoint(checkpoint_path, n_samples=50):
     import random
     from transformers import AutoTokenizer
     from vllm import LLM, SamplingParams
-    from environment import SYSTEM_PROMPT, make_episode_prompt
-    from tasks import load_hard_tasks
+    from environment.environment import SYSTEM_PROMPT, make_episode_prompt
+    from environment.tasks import load_hard_tasks
 
     tok = AutoTokenizer.from_pretrained(checkpoint_path)
     engine = LLM(model=checkpoint_path, gpu_memory_utilization=0.5)

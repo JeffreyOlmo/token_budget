@@ -12,7 +12,7 @@ import random
 import re
 from typing import Optional
 
-from tasks_hanoi import HanoiTask, verify_hanoi_answer
+from environment.tasks_hanoi import HanoiTask, verify_hanoi_answer
 
 
 # ── Earn Reward Distribution ─────────────────────────

@@ -15,7 +15,7 @@ import random
 import re
 from typing import List, Optional, Tuple
 
-from tasks import Task
+from environment.tasks import Task
 
 
 # ── Earn Reward Distribution ─────────────────────────

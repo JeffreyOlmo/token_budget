@@ -14,7 +14,7 @@ import random
 import torch
 from torch.utils.data import Dataset, DataLoader
 from transformers import AutoTokenizer, AutoModelForCausalLM, get_linear_schedule_with_warmup
-from environment import SYSTEM_PROMPT, make_episode_prompt
+from environment.environment import SYSTEM_PROMPT, make_episode_prompt
 
 random.seed(42)
 

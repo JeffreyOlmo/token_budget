@@ -35,28 +35,32 @@ Gen Worker (vLLM)      Ref Server         Training (DeepSpeed)
 
 ## Files
 
-| File | Purpose |
-|---|---|
-| `config.py` | All hyperparameters |
-| `environment.py` | System prompt, earn protocol, answer checking |
-| `rollout.py` | Multi-turn episode generation with earn mechanic |
-| `train_grpo.py` | GRPO training loop (math version) |
-| `ref_server.py` | Reference model server for KL divergence |
-| `tasks.py` | Task loading (MATH-Hard, GSM8K, arithmetic) |
-| `evaluate.py` | Diagnostic evaluation (5 terminalization conditions) |
-| `cot_analysis.py` | CoT reasoning classification across checkpoints |
-| `budget_kv_injection.py` | Precompute KV cache for real-time budget awareness |
-| `budget_vllm.py` | vLLM wrapper for per-step KV block swapping |
-| `sft_warmup.py` | SFT warmup to teach earn protocol before RL |
-| `run.sh` | Launch script |
-
-### Tower of Hanoi variant
-| File | Purpose |
-|---|---|
-| `environment_hanoi.py` | Hanoi-specific environment |
-| `rollout_hanoi.py` | Hanoi rollout generation |
-| `tasks_hanoi.py` | Hanoi task loading (via reasoning-gym) |
-| `train_hanoi.py` | Hanoi GRPO training |
+```
+├── config.py                          # all hyperparameters
+├── run.sh                             # launch script
+├── requirements.txt
+├── training/
+│   ├── train_grpo.py                  # GRPO training loop (math)
+│   ├── train_hanoi.py                 # GRPO training loop (Tower of Hanoi)
+│   ├── ref_server.py                  # reference model server for KL
+│   └── sft_warmup.py                  # SFT warmup to teach earn protocol
+├── environment/
+│   ├── environment.py                 # system prompt, earn protocol, answer checking
+│   ├── rollout.py                     # multi-turn episode generation
+│   ├── tasks.py                       # task loading (MATH-Hard, GSM8K, arithmetic)
+│   ├── environment_hanoi.py           # Tower of Hanoi variant
+│   ├── rollout_hanoi.py               # Hanoi rollout generation
+│   └── tasks_hanoi.py                 # Hanoi tasks (via reasoning-gym)
+├── budget_injection/
+│   ├── budget_kv_injection.py         # precompute KV cache for budget awareness
+│   └── budget_vllm.py                 # vLLM per-step KV block swapping
+├── evaluation/
+│   ├── evaluate.py                    # diagnostic test suite (5 conditions)
+│   └── cot_analysis.py                # CoT reasoning classification
+└── tests/
+    ├── test_environment.py
+    └── test_kv_injection.py
+```
 
 ## Reward Structure
 
